@@ -1,3 +1,13 @@
+<style>
+.naziv
+{
+	color:gray;
+}
+.vrijednost
+{
+	
+}
+</style>
 <?php
 $api_key = "...";
 
@@ -10,18 +20,16 @@ $url = "http://www.tenderi.hr/api/branch/tenders?apiKey=".$api_key."&format=json
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($ch, CURLOPT_URL, $url);
-
 $data = curl_exec($ch);
 curl_close($ch);
-
 $json_objekt = json_decode($data); 
     
 foreach($json_objekt->tenders as $ten)
 {
 	echo "<h2><a target='_blank' href='".$ten->url."'>". $ten->title . "</a></h2>"; 
-	echo $ten->region . "<br>"; 
-    echo $ten->natureOfContract . "<br>"; 
-    echo $ten->publicationDate . "<br>"; 
-	echo $ten->deadlineDate . "<br>";  
+	echo "<div> <span class='naziv'> Lokacija: </span><span class='vrijednost'>".$ten->region."</span></div>";
+	echo "<div> <span class='naziv'> Vrsta ugovora: </span><span class='vrijednost'>".$ten->natureOfContract."</span></div>"; 
+	echo "<div> <span class='naziv'> Datum objave: </span><span class='vrijednost'>".$ten->publicationDate."</span></div>"; 
+	echo "<div> <span class='naziv'> Rok za podnošenje ponuda: </span><span class='vrijednost'>".$ten->deadlineDate."</span></div>"; 
 } 
 ?>
