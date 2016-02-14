@@ -6,7 +6,7 @@ $db = JFactory::getDbo();
 $query = $db->getQuery(true);
 
 
-$query->select(array('id','title','introtext'));
+$query->select('*');
 /*
 *
 * TO DO: promjeniti kategorija id 
@@ -26,7 +26,8 @@ $results = $db->loadObjectList();
 foreach($results as $key=>$val)
 {
 	echo "<h1>".$val->title."</h1>";
-	echo $val->introtext;
+	print_r($val);
+	echo "<br><br><br>";
 }
 
 ?>
