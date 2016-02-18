@@ -13,6 +13,7 @@ $query->select('*');
 *
 */
 $catId = 10;
+$catAlias="vijesti-gradevina";
 $query->from($db->quoteName('#__content'));
 //$query->where($db->quoteName('published') . ' = 1'); //opcionalno: ako zelimo provjeriti jeli kategorija 'published'
 $query->where($db->quoteName('catid') . ' = ' . $catId);
@@ -25,9 +26,8 @@ $db->setQuery($query);
 $results = $db->loadObjectList();
 foreach($results as $key=>$val)
 {
-	echo "<h1>".$val->title."</h1>";
-	print_r($val);
-	echo "<br><br><br>";
+	$alias = $val->alias;
+	echo "<a target='_blank' href='http://gradimozadar.hr/".$catAlias."/".$val->id."-".$val->alias."'><h1>".$val->title."</h1></a>";
 }
 
 ?>
