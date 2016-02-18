@@ -27,7 +27,7 @@ $results = $db->loadObjectList();
 foreach($results as $key=>$val)
 {
 	$alias = $val->alias;
-	echo "<a target='_blank' href='http://gradimozadar.hr/".$catAlias."/".$val->id."-".$val->alias."'><h1>".$val->title."</h1></a>";
+	echo "<a href='http://gradimozadar.hr/".$catAlias."/".$val->id."-".$val->alias."'><h1>".$val->title."</h1></a>";
 }
 
 ?>
