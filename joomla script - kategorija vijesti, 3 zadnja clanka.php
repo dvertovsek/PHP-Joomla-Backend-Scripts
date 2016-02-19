@@ -60,15 +60,17 @@ function showArticles($results)
 
 		$object = $divs->item(0)->attributes;
 
-		if(is_object($object))
-		{
-			echo "<a href='".$articleURL."'><img src='".htmlentities($object->getNamedItem('src')->nodeValue)."' alt='".$articleTitle."' title='".$articleTitle."'></a>";
-		}
-		echo "<a href='".$categURL."'><div>".$categTitle."</div></a>";
-		echo "<div>".$username."</div>";
-		echo "<div>".$articleHits."</div>";
-		echo "<div>".$created."</div>";
-		echo "<a href='".$articleURL."'><h1>".$articleTitle."</h1></a>";
+		echo "<div>";
+			if(is_object($object))
+			{
+				echo "<a href='".$articleURL."'><img src='".htmlentities($object->getNamedItem('src')->nodeValue)."' alt='".$articleTitle."' title='".$articleTitle."'></a>";
+			}
+			echo "<a href='".$categURL."'><div>".$categTitle."</div></a>";
+			echo "<div>".$username."</div>";
+			echo "<div>".$articleHits."</div>";
+			echo "<div>".$created."</div>";
+			echo "<a href='".$articleURL."'><h1>".$articleTitle."</h1></a>";
+		echo "</div>";
 
 	}
 }
