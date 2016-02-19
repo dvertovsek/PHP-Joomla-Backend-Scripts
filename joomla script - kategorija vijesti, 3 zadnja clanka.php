@@ -33,7 +33,7 @@ foreach($results as $key=>$val)
 
  	$intro = $val->introtext;
 
- 	$doc->loadHTML($intro);
+ 	$doc->loadHTML(htmlentities($intro));
  	$divs = $doc->getElementsByTagName('img');
 
 	$object = $divs->item(0)->attributes;
