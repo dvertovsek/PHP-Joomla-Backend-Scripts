@@ -1,12 +1,4 @@
 <?php
-
-
-$link = "index.php?option=com_content&view=category&layout=blog&id=86";
-$poljeLinkova = explode("=", $link);
-echo end($poljeLinkova);
-
-
-
 //dohvati Joomla database objekt
 $db = JFactory::getDbo();
 
