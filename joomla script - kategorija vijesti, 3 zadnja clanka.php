@@ -13,12 +13,18 @@ $query->select('*');
 *
 */
 $catId = 10;
+/*
+*
+* TO DO: set offset
+*
+*/
+$offset = 0;
 $catAlias="vijesti-gradevina";
 $query->from($db->quoteName('#__content'));
 $query->where($db->quoteName('state') . ' = 1');
 $query->where($db->quoteName('catid') . ' = ' . $catId);
 $query->order($db->quoteName('created') . ' DESC');
-$query->setLimit('3');
+$query->setLimit(3,$offset);
 
 //postavljanje definiranog upita u db objekt, zapravo: izvrsavanje upita
 $db->setQuery($query);
