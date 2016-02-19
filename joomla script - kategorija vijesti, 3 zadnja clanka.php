@@ -70,9 +70,8 @@ function showArticles($results)
 	}
 }
 
-//tu pozoves funkciju getArticles, parametri su, redom: LIMIT, OFFSET, MENUID
-$resultArticles = getArticles(3, 0, 841);
-//zatim showArticles kako bi se prikazali clanci, parametri je samo jedan: RESULTARTICLES (parametar dobijen iz prethodne funkcije)
-showArticles($resultArticles);
+//parametri su, redom: LIMIT, OFFSET, MENUID
+showArticles(getArticles(3, 0, 841));
+showArticles(getArticles(3, 0, 814));
 
 ?>
