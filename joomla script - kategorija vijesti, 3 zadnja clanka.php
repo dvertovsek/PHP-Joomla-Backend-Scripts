@@ -40,8 +40,7 @@ foreach($results as $key=>$val)
 
 	if(is_object($object))
 	{
-		echo "<img src='".$object->getNamedItem('src')->nodeValue."' alt='".$articleTitle."' title='".$articleTitle."'>";
-		echo "article title : ".$articleTitle."<br>";
+		echo "<img src='".htmlentities($object->getNamedItem('src')->nodeValue)."' alt='".$articleTitle."' title='".$articleTitle."'>";
 	}
 
 	echo "<a href='http://gradimozadar.hr/".$catAlias."/".$val->id."-".$val->alias."'><h1>".$articleTitle."</h1></a>";
