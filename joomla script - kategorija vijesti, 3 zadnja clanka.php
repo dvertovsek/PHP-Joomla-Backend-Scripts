@@ -6,7 +6,7 @@ $db = JFactory::getDbo();
 $query = $db->getQuery(true);
 
 
-$query->select('*');
+
 /*
 *
 * TO DO: promjeniti kategorija id 
@@ -19,12 +19,26 @@ $catId = 10;
 *
 */
 $offset = 0;
-$catAlias="vijesti-gradevina";
+/*
+*
+* TO DO: set article limit
+*
+*/
+$limit = 3;
+
+$catQuery = $db->getQuery(true);
+$catQuery->select('alias');
+$catQuery->from($db->quoteName('#__categories'));
+$catQuery->where($db->quoteName('id') . ' ='.$catId);
+$db->setQuery($catQuery);
+$catAlias = $db->loadResult();
+
+$query->select('id,alias,title,introtext');
 $query->from($db->quoteName('#__content'));
 $query->where($db->quoteName('state') . ' = 1');
 $query->where($db->quoteName('catid') . ' = ' . $catId);
 $query->order($db->quoteName('created') . ' DESC');
-$query->setLimit(3,$offset);
+$query->setLimit($limit,$offset);
 
 //postavljanje definiranog upita u db objekt, zapravo: izvrsavanje upita
 $db->setQuery($query);
@@ -32,6 +46,7 @@ $db->setQuery($query);
 $results = $db->loadObjectList();
 foreach($results as $key=>$val)
 {
+	$id = $val->id;
 	$alias = $val->alias;
 	$articleTitle = $val->title;
 
@@ -49,7 +64,7 @@ foreach($results as $key=>$val)
 		echo "<img src='".htmlentities($object->getNamedItem('src')->nodeValue)."' alt='".$articleTitle."' title='".$articleTitle."'>";
 	}
 
-	echo "<a href='http://gradimozadar.hr/".$catAlias."/".$val->id."-".$val->alias."'><h1>".$articleTitle."</h1></a>";
+	echo "<a href='http://gradimozadar.hr/".$catAlias."/".$id."-".$alias."'><h1>".$articleTitle."</h1></a>";
 
 }
 
