@@ -41,7 +41,7 @@ foreach($results as $key=>$val)
 	if(is_object($object))
 	{
 		echo "<img src='".$object->getNamedItem('src')->nodeValue."' alt='".$articleTitle."' title='".$articleTitle."'>";
-		echo "URL : ".$object->getNamedItem('src')->nodeValue."<br>";
+		echo "article title : ".$articleTitle."<br>";
 	}
 
 	echo "<a href='http://gradimozadar.hr/".$catAlias."/".$val->id."-".$val->alias."'><h1>".$articleTitle."</h1></a>";
