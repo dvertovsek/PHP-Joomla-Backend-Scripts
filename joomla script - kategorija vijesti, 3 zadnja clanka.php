@@ -33,7 +33,7 @@ $menuResult = $db->loadObjectList()[0];
 $menuAlias = $menuResult->alias;
 
 $linkArray = explode("=", $menuResult->link);
-$catId = end($poljeLinkova);
+$catId = end($linkArray);
 
 $query = $db->getQuery(true);
 
