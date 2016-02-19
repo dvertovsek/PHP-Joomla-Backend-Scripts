@@ -31,7 +31,7 @@ foreach($results as $key=>$val)
 
 	$doc = new DOMDocument();
 
- 	$intro = htmlspecialchars_decode($val->introtext);
+ 	$intro = $val->introtext;
 
  	$doc->loadHTML($intro);
  	$divs = $doc->getElementsByTagName('img');
