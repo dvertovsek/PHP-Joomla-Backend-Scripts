@@ -15,7 +15,7 @@ $query->select('*');
 $catId = 10;
 $catAlias="vijesti-gradevina";
 $query->from($db->quoteName('#__content'));
-//$query->where($db->quoteName('published') . ' = 1'); //opcionalno: ako zelimo provjeriti jeli kategorija 'published'
+$query->where($db->quoteName('state') . ' = 1');
 $query->where($db->quoteName('catid') . ' = ' . $catId);
 $query->order($db->quoteName('created') . ' DESC');
 $query->setLimit('3');
