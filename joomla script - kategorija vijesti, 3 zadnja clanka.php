@@ -1,4 +1,6 @@
 <?php
+$menuAlias = '';
+
 function getArticles($limit, $offset, $menuId)
 {
 	//dohvati Joomla database objekt
@@ -13,7 +15,7 @@ function getArticles($limit, $offset, $menuId)
 	$db->setQuery($menuQuery);
 	//dohvacanje rezultat
 	$menuResult = $db->loadObjectList()[0];
-	$menuAlias = $menuResult->alias;
+	$GLOBALS['menuAlias'] = $menuResult->alias;
 
 	$linkArray = explode("=", $menuResult->link);
 	$catId = end($linkArray);
@@ -44,6 +46,7 @@ function showArticles($results)
 		$articleHits = $val->hits;
 		$username = $val->username;
 		$created = (new DateTime($val->created))->format('d-m-Y');
+		$menuAlias = $GLOBALS['menuAlias'];
 
 		$categURL = "http://gradimozadar.hr/".$menuAlias;
 		$articleURL = $categURL."/".$id."-".$alias;
