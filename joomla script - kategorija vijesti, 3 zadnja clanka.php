@@ -65,7 +65,10 @@ foreach($results as $key=>$val)
 	$categTitle = $val->categ_title;
 	$articleHits = $val->hits;
 	$username = $val->username;
-	$created = $val->created;
+	$created = (new DateTime($val->created))->format('d-m-Y');
+
+	$categURL = "http://gradimozadar.hr/".$menuAlias;
+	$articleURL = $categURL."/".$id."-".$alias;
 
 	$doc = new DOMDocument();
 
@@ -78,13 +81,13 @@ foreach($results as $key=>$val)
 
 	if(is_object($object))
 	{
-		echo "<img src='".htmlentities($object->getNamedItem('src')->nodeValue)."' alt='".$articleTitle."' title='".$articleTitle."'>";
+		echo "<a href='".$articleURL."'><img src='".htmlentities($object->getNamedItem('src')->nodeValue)."' alt='".$articleTitle."' title='".$articleTitle."'></a>";
 	}
-	echo "<div>".$categTitle."</div>";
+	echo "<a href='".$categURL."'><div>".$categTitle."</div></a>";
 	echo "<div>".$username."</div>";
 	echo "<div>".$articleHits."</div>";
 	echo "<div>".$created."</div>";
-	echo "<a href='http://gradimozadar.hr/".$menuAlias."/".$id."-".$alias."'><h1>".$articleTitle."</h1></a>";
+	echo "<a href='".$articleURL."'><h1>".$articleTitle."</h1></a>";
 
 }
 
