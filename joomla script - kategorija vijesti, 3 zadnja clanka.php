@@ -27,7 +27,24 @@ $results = $db->loadObjectList();
 foreach($results as $key=>$val)
 {
 	$alias = $val->alias;
-	echo "<a href='http://gradimozadar.hr/".$catAlias."/".$val->id."-".$val->alias."'><h1>".$val->title."</h1></a>";
+	$articleTitle = $val->title;
+
+	$doc = new DOMDocument();
+
+ 	$intro = htmlspecialchars_decode($val->introtext);
+
+ 	$doc->loadHTML($intro);
+ 	$divs = $doc->getElementsByTagName('img');
+
+	$object = $divs->item(0)->attributes;
+
+	if(is_object($object))
+	{
+		echo "<img src='".$object->getNamedItem('src')->nodeValue."' alt='".$articleTitle."' title='".$articleTitle."'>";
+	}
+
+	echo "<a href='http://gradimozadar.hr/".$catAlias."/".$val->id."-".$val->alias."'><h1>".$articleTitle."</h1></a>";
+
 }
 
 ?>
