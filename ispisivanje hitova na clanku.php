@@ -19,6 +19,6 @@
 		$db->setQuery($query);
 		$hitCount = $db->loadResult();
 
-		echo "<div>".$hitCount."</div>"
+		echo "<div>".$hitCount."</div>";
 	}
 ?>
