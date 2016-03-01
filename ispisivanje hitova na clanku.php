@@ -5,8 +5,6 @@
 	$arr = explode('/',$url);
 	$articleId = explode('-',$arr[count($arr)-1])[0];
 
-	echo $articleId;
-
 	if(is_numeric($articleId))
 	{
 		$db = JFactory::getDbo();
